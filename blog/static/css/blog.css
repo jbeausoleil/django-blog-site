@@ -1,0 +1,35 @@
+.blogfont {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.5em;
+}
+
+.bigbrand {
+    font-size: 1.5em;
+}
+
+.centerstage {
+    margin-left: center;
+    margin-right: center;
+}
+
+.postdate {
+    text-align: center;
+}
+
+.posttile {
+    font-family: Montserrat, sans-serif;
+    font-size: 2.0em;
+    text-align: center;
+}
+
+.postcontent {
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
+
+.btn-comment {
+    positon: absolute;
+    right: 0px;
+}
+
+.base

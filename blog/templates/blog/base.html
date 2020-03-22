@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <!--  BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--  MEDIUM STYLE EDITOR -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <!--  CUSTOM CSS -->
+    <link ref="stylesheet" type="text/css" href="{% static 'css/blog.css' %}"/>
+    <!--  FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!--  NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light blogfont custom-navbar">
+        <ul class="navbar-nav">
+            <li><a class="navbar-brand bigbrand" href="{% url 'post_list' %}">My Blog</a></li>
+            <li><a class="nav-link" href="{% url 'about' %}">About</a></li>
+            <li><a class="nav-link" href="https://github.com/jbeausoleil">Github</a></li>
+            <li><a class="nav-link" href="https://www.linkedin.com/in/justin-beausoleil/">LinkedIn</a></li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                <li><a class="nav-link" href="{% url 'create' %}">New Post</a></li>
+                <li><a class="nav-link" href="{% url 'draft_list' %}">Draft List</a></li>
+                <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                <li><a class="navbar">Welcome: {{ user.username }}</a></li>
+            {% else %}
+                <li><a class="nav navbar-nav nav-link" href="{% url 'login' %}"><span class="material-icons">perm_identity</span></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!--  CONTENT BLOCK -->
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_post">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
